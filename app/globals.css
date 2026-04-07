@@ -1,0 +1,164 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --radius: 1.35rem;
+  --background: #f4eee7;
+  --foreground: #1e1915;
+  --card: #fbf8f3;
+  --card-foreground: #1e1915;
+  --popover: #fbf8f3;
+  --popover-foreground: #1e1915;
+  --primary: #b9915d;
+  --primary-foreground: #1d1712;
+  --secondary: #ece2d4;
+  --secondary-foreground: #2a241f;
+  --muted: #ebe3d9;
+  --muted-foreground: #665c52;
+  --accent: #ded2c0;
+  --accent-foreground: #1e1915;
+  --destructive: #c55b4d;
+  --destructive-foreground: #fff9f7;
+  --border: #d7cbbe;
+  --input: #d7cbbe;
+  --ring: #b9915d;
+  --sidebar: #f8f2eb;
+  --sidebar-foreground: #1e1915;
+  --sidebar-border: #ddd0c2;
+  --editor: #fffdf9;
+  --surface: rgba(255, 255, 255, 0.54);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-newsreader);
+  --font-mono: var(--font-ibm-plex-mono);
+  --radius-sm: calc(var(--radius) - 0.5rem);
+  --radius-md: calc(var(--radius) - 0.25rem);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 0.4rem);
+}
+
+.dark {
+  --background: #14110f;
+  --foreground: #f4ece2;
+  --card: #1d1814;
+  --card-foreground: #f4ece2;
+  --popover: #1d1814;
+  --popover-foreground: #f4ece2;
+  --primary: #d0ae7a;
+  --primary-foreground: #17120e;
+  --secondary: #27211d;
+  --secondary-foreground: #f1e7db;
+  --muted: #231d19;
+  --muted-foreground: #b7aa9b;
+  --accent: #2a231d;
+  --accent-foreground: #f5ece2;
+  --destructive: #d56a5c;
+  --destructive-foreground: #fff4f2;
+  --border: #312924;
+  --input: #312924;
+  --ring: #d0ae7a;
+  --sidebar: #171310;
+  --sidebar-foreground: #f4ece2;
+  --sidebar-border: #2b241f;
+  --editor: #1a1511;
+  --surface: rgba(29, 24, 20, 0.64);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  background-image: radial-gradient(
+    circle at top,
+    color-mix(in srgb, var(--primary) 12%, transparent),
+    transparent 36%
+  );
+  color: var(--foreground);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--primary) 34%, transparent);
+  color: var(--foreground);
+}
+
+a,
+button {
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    opacity 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.surface-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--border) 24%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--border) 24%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 28px 28px;
+}
+
+.note-prose {
+  @apply prose prose-stone max-w-none dark:prose-invert prose-headings:font-serif prose-headings:tracking-tight prose-p:text-[0.98rem] prose-p:leading-7 prose-code:rounded prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:font-mono prose-code:text-sm prose-pre:rounded-2xl prose-pre:border prose-pre:border-border prose-pre:bg-card prose-strong:text-foreground prose-a:text-primary;
+}
+
+.glass-panel {
+  background: color-mix(in srgb, var(--surface) 100%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+.editor-scroll::-webkit-scrollbar,
+.thin-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.editor-scroll::-webkit-scrollbar-thumb,
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--muted-foreground) 32%, transparent);
+  border-radius: 999px;
+}
+
+.editor-scroll::-webkit-scrollbar-track,
+.thin-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
